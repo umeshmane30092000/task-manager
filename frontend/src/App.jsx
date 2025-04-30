@@ -7,7 +7,7 @@ function App() {
   const [editingId, setEditingId] = useState(null); // track editing
 
   const fetchTasks = async () => {
-    const res = await axios.get('http://localhost:5000/tasks');
+    const res = await axios.get('https://task-manager-2-i2qb.onrender.com');
     setTasks(res.data);
   };
 
@@ -15,10 +15,10 @@ function App() {
     if (!text.trim()) return;
 
     if (editingId) {
-      await axios.put(`http://localhost:5000/tasks/${editingId}`, { text });
+      await axios.put(`https://task-manager-2-i2qb.onrender.com/${editingId}`, { text });
       setEditingId(null);
     } else {
-      await axios.post('http://localhost:5000/tasks', { text });
+      await axios.post('https://task-manager-2-i2qb.onrender.com', { text });
     }
 
     setText('');
@@ -26,7 +26,7 @@ function App() {
   };
 
   const deleteTask = async (id) => {
-    await axios.delete(`http://localhost:5000/tasks/${id}`);
+    await axios.delete(`https://task-manager-2-i2qb.onrender.com/${id}`);
     fetchTasks();
   };
 
